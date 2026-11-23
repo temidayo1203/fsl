@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSL Capital Limited — Investment Banking & Securities</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#F97D00; --orange-2:#FF8A00; --blue:#1F5AF0; --blue-2:#2E9BEE;
+  --ink:#0B0B0D; --navy:#060B26; --grey:#F4F5F7; --mut:#8A8F98;
+  --line:rgba(15,20,35,.08);
+  --f-head:'Manrope',sans-serif; --f-body:'Inter',sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{font-family:var(--f-body);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:0;background:none}
+::selection{background:var(--orange);color:#fff}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:#0b0b0d}
+::-webkit-scrollbar-thumb{background:var(--orange);border-radius:6px}
+
+/* ---------- preloader ---------- */
+#loader{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;background:var(--ink)}
+#loader .ld-in{text-align:center}
+#loader .ld-logo{display:flex;align-items:center;gap:10px;justify-content:center;transform:translateY(14px);opacity:0}
+#loader .ld-logo img{height:50px;display:block}
+.brand img{display:block;height:34px;width:auto}
+#loader .ld-bar{width:210px;height:2px;background:rgba(255,255,255,.14);margin:26px auto 10px;border-radius:2px;overflow:hidden}
+#loader .ld-bar i{display:block;height:100%;width:0%;background:var(--orange)}
+#loader .ld-num{font-size:12px;color:var(--mut);letter-spacing:.18em;font-variant-numeric:tabular-nums}
+#loader .ld-shutter{position:absolute;inset:0;background:var(--orange);transform:scaleY(0);transform-origin:bottom}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:#fff;transition:transform .45s var(--ease),box-shadow .3s;will-change:transform}
+.nav.hide{transform:translateY(-110%)}
+.nav.scrolled{box-shadow:0 1px 0 var(--line),0 12px 40px -18px rgba(10,15,40,.18)}
+.nav-in{max-width:1440px;margin:0 auto;height:72px;padding:0 56px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:9px}
+.brand svg{display:block}
+.brand b{font-family:var(--f-head);font-weight:800;font-size:23px;letter-spacing:-.02em;color:#1B2C7A}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links>li{position:relative;list-style:none}
+.nav-links a,.nav-links .nl-btn{font-size:14px;font-weight:500;color:#1c2130;display:inline-flex;align-items:center;gap:6px;padding:26px 0;letter-spacing:-.01em;transition:color .2s}
+.nav-links a:hover,.nav-links .nl-btn:hover{color:var(--orange)}
+.nav-links .chev{transition:transform .25s}
+.nav-links li.open .chev,.nav-links .nl-btn:hover .chev{transform:rotate(180deg)}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:18px;height:2px;width:100%;background:var(--orange);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease)}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+.drop{position:absolute;top:calc(100% - 14px);left:50%;translate:-50% 8px;min-width:230px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 24px 60px -20px rgba(10,15,40,.22);padding:8px;opacity:0;pointer-events:none;transition:.28s var(--ease)}
+li:hover>.drop,li:focus-within>.drop,li.open>.drop{opacity:1;translate:-50% 0;pointer-events:auto}
+.drop a{display:flex;align-items:center;justify-content:space-between;padding:11px 13px;border-radius:8px;font-size:13.5px;color:#333a4d}
+.drop a:hover{background:#FFF3E4;color:var(--ink)}
+.drop a::after{display:none}
+.drop a .arr{opacity:0;translate:-4px 0;transition:.2s}
+.drop a:hover .arr{opacity:1;translate:0 0;color:var(--orange)}
+/* services mega menu */
+.nav-links li:has(>.mega)::after{content:"";position:absolute;top:100%;left:-12px;right:-12px;height:10px}
+.mega{position:fixed;top:71px;left:0;right:0;z-index:97;background:#fff;display:grid;grid-template-columns:1.75fr 1fr;opacity:0;transform:translateY(-6px);pointer-events:none;transition:.28s var(--ease);box-shadow:0 40px 80px -28px rgba(10,15,40,.28)}
+li:hover>.mega,li:focus-within>.mega,li.open>.mega{opacity:1;transform:none;pointer-events:auto}
+.mega a{padding:0;font-weight:400}
+.mega a::after{display:none}
+.mega-l{padding:42px 56px 38px;display:flex;flex-direction:column}
+.mega-cols{display:grid;grid-template-columns:1fr 1fr;gap:70px;max-width:920px}
+.mcol h6{font-size:14px;font-weight:600;color:#1c2130;padding-bottom:14px;border-bottom:1px solid #e9ebf0;margin-bottom:16px}
+.mcol h6.sub{border:0;padding-bottom:0;margin:28px 0 16px}
+.mega .mitem{display:flex;align-items:center;gap:14px;padding:9px 0;font-size:13.5px;color:#333a4d;transition:color .2s}
+.mitem:hover{color:var(--orange)}
+.mitem .mi{width:30px;height:30px;border-radius:7px;background:var(--orange);display:flex;align-items:center;justify-content:center;flex:none}
+.mitem .mi svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.mega-cta{display:flex;align-items:center;justify-content:space-between;background:#5b3fd4;margin-top:36px;max-width:920px}
+.mega-cta p{color:#fff;font-size:14px;padding:15px 22px;font-weight:500}
+.mega-cta a{background:#0d0f14;color:#fff;padding:15px 30px;font-size:14px;font-weight:600;white-space:nowrap;transition:background .25s;display:inline-block}
+.mega-cta a:hover{background:#2a2f42}
+.mega-r{background:#f4f4f7;padding:42px 56px 38px}
+.mega-r h6{font-size:14px;font-weight:600;color:#1c2130;margin-bottom:20px}
+.prods{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.mega .prod{display:block}
+.prod img{width:100%;aspect-ratio:1.05;object-fit:cover;border-radius:8px;display:block;transition:transform .5s var(--ease)}
+.prod:hover img{transform:scale(1.04)}
+.prod .pl{display:flex;align-items:center;justify-content:space-between;margin-top:10px;font-size:13px;font-weight:600;color:#1c2130}
+.prod .pl svg{width:13px;height:13px;stroke:#1c2130;fill:none;stroke-width:2;transition:transform .3s var(--ease)}
+.prod:hover .pl svg{transform:translate(2px,-2px)}
+.nav-cta{display:flex;align-items:center;gap:22px}
+.login{font-size:14px;font-weight:500}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:14px;border-radius:6px;padding:12px 22px;transition:transform .25s var(--ease),box-shadow .25s,background .25s;position:relative;overflow:hidden}
+.btn-o{background:var(--orange);color:#fff}
+.btn-o:hover{transform:translateY(-2px);box-shadow:0 12px 26px -10px rgba(249,125,0,.55)}
+.btn-b{background:var(--blue);color:#fff}
+.btn-b:hover{transform:translateY(-2px);box-shadow:0 12px 26px -10px rgba(31,90,240,.55)}
+.btn-k{background:#0d0f14;color:#fff}
+.btn-k:hover{transform:translateY(-2px);box-shadow:0 12px 26px -12px rgba(0,0,0,.6)}
+.btn .b-arr{transition:transform .3s var(--ease)}
+.btn:hover .b-arr{transform:translateX(4px)}
+.burger{display:none;width:42px;height:42px;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.burger i{width:20px;height:2px;background:var(--ink);transition:.3s;display:block}
+body.menu-open .burger i:nth-child(1){transform:translateY(7px) rotate(45deg)}
+body.menu-open .burger i:nth-child(2){opacity:0}
+body.menu-open .burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+body.menu-open{overflow:hidden}
+.m-menu{position:fixed;inset:0;z-index:99;pointer-events:none;visibility:hidden;transition:visibility 0s .7s;display:flex;flex-direction:column;padding:104px 28px 30px;overflow-y:auto}
+.m-menu::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(120% 90% at 85% -10%,#1c2a6b 0%,#101736 45%,#0b0c12 100%);clip-path:circle(0 at calc(100% - 60px) 40px);transition:clip-path .65s var(--ease)}
+body.menu-open .m-menu{pointer-events:auto;visibility:visible;transition-delay:0s}
+body.menu-open .m-menu::before{clip-path:circle(150% at calc(100% - 60px) 40px)}
+.m-label{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:14px;flex-shrink:0;opacity:0;transform:translateY(12px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+body.menu-open .m-label{opacity:1;transform:none;transition-delay:.1s}
+.m-item{display:flex;align-items:center;gap:15px;width:100%;flex-shrink:0;font-family:var(--f-head);font-size:clamp(25px,6.8vw,33px);font-weight:700;color:#fff;padding:13px 0;border:0;border-bottom:1px solid rgba(255,255,255,.09);background:none;cursor:pointer;text-align:left;opacity:0;transform:translateY(26px);transition:opacity .5s var(--ease),transform .5s var(--ease),color .2s}
+.m-item i{font-style:normal;font-family:var(--f-body);font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--orange)}
+.m-item .m-arr{margin-left:auto;width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;opacity:.4;transition:.25s;flex:none}
+.m-item:hover,.m-item:active{color:#fff}
+.m-item:hover .m-arr{opacity:1;transform:translateX(4px);color:var(--orange)}
+body.menu-open .m-item{opacity:1;transform:none}
+body.menu-open .m-item:nth-child(2){transition-delay:.16s}
+body.menu-open .m-item:nth-child(3){transition-delay:.22s}
+body.menu-open .m-item:nth-child(5){transition-delay:.28s}
+body.menu-open .m-item:nth-child(6){transition-delay:.34s}
+body.menu-open .m-item:nth-child(7){transition-delay:.4s}
+body.menu-open .m-item:nth-child(8){transition-delay:.46s}
+.m-acc .m-arr{transition:transform .3s var(--ease),opacity .25s}
+.m-acc.open .m-arr{transform:rotate(180deg);opacity:1}
+.m-sub{max-height:0;overflow:hidden;flex-shrink:0;transition:max-height .5s var(--ease)}
+.m-sub.open{max-height:420px}
+.m-sub a{display:block;color:rgba(255,255,255,.62);font-size:15px;font-weight:500;padding:10px 0 10px 46px;border-bottom:1px solid rgba(255,255,255,.05);transition:color .2s,padding-left .25s var(--ease)}
+.m-sub a:hover{color:var(--orange);padding-left:52px}
+.m-cta{margin-top:auto;padding-top:34px;display:flex;flex-direction:column;flex-shrink:0;gap:10px;opacity:0;transform:translateY(12px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.m-cta .btn{justify-content:center}
+body.menu-open .m-cta{opacity:1;transform:none;transition-delay:.52s}
+.m-foot{display:flex;align-items:center;justify-content:space-between;flex-shrink:0;margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,255,255,.09);font-size:12.5px;color:rgba(255,255,255,.45);opacity:0;transition:opacity .45s var(--ease)}
+.m-foot a{color:rgba(255,255,255,.7)}
+body.menu-open .m-foot{opacity:1;transition-delay:.58s}
+
+main{padding-top:72px}
+
+/* ---------- hero ---------- */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;min-height:calc(100vh - 72px);background:var(--orange)}
+.hero-l{position:relative;background:linear-gradient(160deg,#FF8C0A 0%,#F97D00 55%,#F06E00 100%);padding:110px 64px 70px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.hero-l::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 500px at 110% -10%,rgba(255,255,255,.16),transparent 60%);pointer-events:none}
+.hero-l::after{content:"";position:absolute;right:-140px;bottom:-160px;width:420px;height:420px;border:1px solid rgba(255,255,255,.14);border-radius:50%}
+.hero-badge{display:inline-flex;align-self:flex-start;align-items:center;gap:10px;color:#fff;font-size:12.5px;font-weight:500;padding:9px 16px;border-left:2px solid #fff;background:rgba(255,255,255,.12);backdrop-filter:blur(4px);overflow:hidden}
+.hero-h{font-family:var(--f-head);font-size:clamp(40px,4.3vw,64px);font-weight:800;letter-spacing:-.035em;color:#fff;line-height:1.04;margin:30px 0 22px;overflow:hidden}
+.hero-h .w{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero-h .w>i{display:inline-block;font-style:normal;transform:translateY(110%)}
+.hero-sub{color:rgba(255,255,255,.92);font-size:15.5px;line-height:1.65;max-width:440px;font-weight:500}
+.hero-cta{display:flex;align-items:center;gap:30px;margin-top:44px}
+.hero-cta .lm{color:#fff;font-weight:600;font-size:14.5px;display:inline-flex;align-items:center;gap:8px;border-bottom:1px solid transparent;padding-bottom:3px;transition:.3s}
+.hero-cta .lm:hover{border-color:#fff;gap:13px}
+.hero-r{position:relative;overflow:hidden}
+.hslides{position:absolute;inset:0;transform:scale(1.18)}
+.hslide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.45) contrast(1.02);opacity:0;transition:opacity 1.8s ease-in-out;will-change:opacity,transform}
+.hslide.on{opacity:1}
+.hero-r::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,10,16,.12),transparent 35%,rgba(8,10,16,.18))}
+.hero-shield{position:absolute;right:26px;bottom:24px;width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.25)}
+
+/* ---------- section shell ---------- */
+.sec{padding:110px 56px}
+.sec-h{font-family:var(--f-head);font-weight:800;letter-spacing:-.035em;line-height:1.12}
+.sec-sub{color:var(--mut);font-size:14.5px;line-height:1.7}
+.dark{background:var(--ink);color:#fff}
+.dark .sec-sub{color:#9aa0ad}
+
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:1.25fr .85fr;gap:80px;max-width:1330px;margin:0 auto}
+.about-txt{font-family:var(--f-head);font-size:clamp(26px,2.35vw,36px);font-weight:700;letter-spacing:-.025em;line-height:1.42}
+.about-txt .hl{color:var(--orange);position:relative;white-space:nowrap}
+.about-txt .hl::after{content:"";position:absolute;left:0;bottom:2px;height:.14em;width:100%;background:var(--orange);opacity:.35;transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease) .3s}
+.about-txt.in .hl::after{transform:scaleX(1)}
+.feat{list-style:none;display:flex;flex-direction:column;gap:34px;margin-top:6px}
+.feat li{display:flex;gap:20px}
+.feat .fi{width:26px;height:26px;color:var(--orange);flex:none;margin-top:2px}
+.feat h4{font-size:15.5px;font-weight:700;letter-spacing:-.01em;margin-bottom:7px}
+.feat p{color:#9aa0ad;font-size:13px;line-height:1.65;max-width:330px}
+.feat li{opacity:0;transform:translateY(24px)}
+.about-cta{margin-top:44px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);max-width:1330px;margin:96px auto 0;border-top:1px solid rgba(255,255,255,.08);padding-top:64px}
+.stat{text-align:center}
+.stat b{display:block;font-family:var(--f-head);font-weight:800;font-size:clamp(40px,3.6vw,54px);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.stat b span.sfx{display:inline;font-size:inherit;margin:0;color:var(--orange)}
+.stat span{display:block;margin-top:14px;color:#9aa0ad;font-size:13.5px}
+.stat{opacity:0;transform:translateY(26px)}
+
+/* ---------- subsidiaries ---------- */
+.subs-head{text-align:center;max-width:760px;margin:0 auto 72px}
+.subs-head .sec-h{font-size:clamp(30px,2.8vw,40px)}
+.subs-head .sec-h .blue{font-style:normal;color:var(--blue)}
+.subs-head .sec-sub{margin-top:18px;max-width:560px;margin-left:auto;margin-right:auto}
+.subs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 24px;max-width:1330px;margin:0 auto}
+.sub-card{border-radius:6px;overflow:hidden;cursor:pointer}
+.sub-media{position:relative;aspect-ratio:1.62;overflow:hidden}
+.sub-media img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.sub-card:hover .sub-media img{transform:scale(1.07)}
+.sub-media .bar{position:absolute;left:0;top:0;bottom:0;width:7px;z-index:2}
+.sub-body{padding:22px 4px 0}
+.sub-body h3{font-size:15px;font-weight:700;letter-spacing:-.01em;margin-bottom:10px}
+.sub-body p{color:var(--mut);font-size:13px;line-height:1.7;max-width:290px;min-height:44px}
+.sub-link{display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-size:13px;font-weight:600}
+.sub-link .sq{width:26px;height:26px;background:#0d0f14;color:#fff;display:flex;align-items:center;justify-content:center;border-radius:4px;transition:.3s var(--ease)}
+.sub-card:hover .sq{background:var(--orange);transform:translateX(4px) rotate(-45deg)}
+.sub-card{opacity:0;transform:translateY(36px)}
+
+/* ---------- certifications ---------- */
+.certs{background:var(--grey);padding-left:24px;padding-right:24px}
+.certs .sec-h{text-align:center;font-size:clamp(26px,2.4vw,34px);margin-bottom:70px}
+.cert-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:none;margin:0 auto}
+.cert{background:#fff;border-radius:2px;padding:28px 24px 24px;min-height:250px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s}
+.cert:hover{transform:translateY(-6px);box-shadow:0 22px 44px -20px rgba(15,25,60,.18)}
+.cert h4{font-size:15px;font-weight:700;margin-bottom:14px}
+.cert p{color:var(--mut);font-size:12px;line-height:1.75;flex:1}
+.cert .emblem{margin-top:22px;height:30px}
+.cert{opacity:0;transform:translateY(30px)}
+
+/* ---------- quote ---------- */
+.quote{text-align:center;max-width:920px;margin:0 auto}
+.quote .qmark{width:44px;height:44px;margin:0 auto 26px;color:var(--orange);opacity:.9}
+.quote p{font-family:var(--f-head);font-size:clamp(21px,2vw,30px);font-weight:700;letter-spacing:-.02em;line-height:1.5}
+.quote .who{display:flex;align-items:center;justify-content:center;gap:13px;margin-top:36px}
+.quote .who img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+.quote .who b{display:block;font-size:14px;text-align:left}
+.quote .who span{display:block;font-size:12px;color:var(--mut);text-align:left;margin-top:2px}
+.quote.on-dark p{color:#fff}
+.quote.on-dark .who b{color:#fff}
+
+/* ---------- why choose us ---------- */
+.why-head{text-align:center;max-width:640px;margin:0 auto 70px}
+.why-head .sec-h{font-size:clamp(30px,2.8vw,40px)}
+.why-head .sec-sub{margin-top:18px}
+.why-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px;max-width:1220px;margin:0 auto}
+.wcard{border-radius:14px;position:relative;overflow:hidden;min-height:340px;padding:36px;display:flex;flex-direction:column;justify-content:flex-end;opacity:0;transform:translateY(40px)}
+.wcard .ic{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.16);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.22);margin-bottom:auto}
+.wcard h4{font-family:var(--f-head);font-size:19px;font-weight:700;letter-spacing:-.015em;margin-bottom:12px;color:#fff}
+.wcard p{font-size:13px;line-height:1.7;color:rgba(255,255,255,.85);max-width:330px}
+.wcard img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.wcard:hover img.bg{transform:scale(1.06)}
+.wcard .ovl{position:absolute;inset:0}
+.wcard>*{position:relative;z-index:2}
+.w1{grid-column:span 5;background:var(--blue)}
+.w2{grid-column:span 7}.w2 .ovl{background:linear-gradient(200deg,rgba(30,60,140,.35),rgba(10,14,30,.78))}
+.w3{grid-column:span 7}.w3 .ovl{background:linear-gradient(160deg,rgba(150,60,0,.55),rgba(10,10,12,.82))}
+.w4{grid-column:span 5;background:var(--orange)}
+.w5{grid-column:span 12;min-height:230px;background:#17181d;flex-direction:row;align-items:center;justify-content:flex-end;gap:30px;padding:40px 60px}
+.w5 .shieldwm{position:absolute;left:-30px;bottom:-90px;width:300px;opacity:.08;transform:rotate(-8deg)}
+.w5 h4{font-size:20px}
+.w5 .ic{margin:0;flex:none}
+.wcard .ic svg{width:21px;height:21px;color:#fff}
+.wcard{will-change:transform}
+
+/* ---------- expertise ---------- */
+.exp-wrap{max-width:1220px;margin:0 auto;position:relative}
+.exp-head{max-width:520px}
+.exp-head .sec-h{font-size:clamp(30px,2.8vw,40px)}
+.exp-head .sec-sub{margin-top:20px;max-width:430px}
+.exp-deco{position:absolute;top:-40px;right:-30px;width:320px;opacity:.5}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:64px 40px;margin-top:90px}
+.exp-it .ei{width:30px;height:30px;color:var(--orange);margin-bottom:22px}
+.exp-it .ei svg{width:100%;height:100%}
+.exp-it h4{font-size:16.5px;font-weight:700;letter-spacing:-.01em;margin-bottom:14px}
+.exp-it p{color:#9aa0ad;font-size:13px;line-height:1.75}
+.exp-it{opacity:0;transform:translateY(30px)}
+.exp-cta{text-align:center;margin-top:84px}
+
+/* ---------- resources ---------- */
+.res-head{text-align:center;max-width:640px;margin:0 auto 80px}
+.res-head .sec-h{font-size:clamp(30px,2.8vw,40px)}
+.res-head .sec-sub{margin-top:18px}
+.res-list{display:flex;flex-direction:column;gap:14px;max-width:1180px;margin:0 auto}
+.res-jump{display:block;width:20px;height:20px;color:#1a1d26;margin:0 0 8px 4px;transition:transform .3s var(--ease)}
+.res-jump:hover{transform:translate(3px,-3px)}
+.res-card{display:grid;grid-template-columns:2fr 1fr;gap:8px;min-height:228px;cursor:pointer;opacity:0;transform:translateY(36px)}
+.res-l{background:#fbf0e9;border-radius:8px;padding:24px 28px;transition:background .35s}
+.res-card:hover .res-l{background:#f8e8dd}
+.res-l p{color:#454a56;font-size:13px;line-height:1.7;max-width:400px}
+.res-r{position:relative;overflow:hidden;border-radius:8px;box-shadow:0 16px 32px -16px rgba(20,22,44,.3)}
+.res-r img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.res-card:hover .res-r img{transform:scale(1.08)}
+
+/* ---------- testimonials wall ---------- */
+.love{background:var(--grey)}
+.love .sec-h{text-align:center;font-size:clamp(28px,2.6vw,38px)}
+.love .sec-h .dim{color:#b9bec9}
+.love .sec-sub{text-align:center;max-width:540px;margin:18px auto 0;font-size:13px}
+.tst-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px;max-width:1220px;margin:70px auto 0}
+.tst{background:#fff;border:1px solid #e9ebf0;border-radius:12px;padding:30px;box-shadow:0 6px 22px -16px rgba(15,25,60,.12);opacity:0;transform:translateY(34px);transition:box-shadow .35s;display:flex;flex-direction:column}
+.tst:hover{box-shadow:0 22px 46px -22px rgba(15,25,60,.22)}
+.tst .co{font-size:13px;font-weight:500;color:#3f4452;margin-bottom:52px}
+.tst p{font-size:14.5px;line-height:1.75;color:#2b3040}
+.tst .who{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:30px}
+.tst .who img,.tst .who .av{width:40px;height:40px;border-radius:8px;object-fit:cover;background:#0d0f14}
+.tst .who .av{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px}
+.tst .who b{display:block;font-size:13.5px}
+.tst .who span{font-size:11.5px;color:var(--mut)}
+.tst.featured{position:relative;overflow:hidden;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;min-height:420px}
+.tst.featured img.bg{position:absolute;inset:0;width:100%;height:110%;object-fit:cover}
+.tst.featured::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,26,.3),rgba(10,14,26,.88))}
+.tst.featured>*{position:relative;z-index:2}
+.tst.featured p{font-family:var(--f-head);font-size:clamp(16px,1.45vw,21px);font-weight:500;letter-spacing:-.01em;line-height:1.5;color:#fff;max-width:62%}
+.tst.featured .sig{margin-top:26px;font-size:13px;color:rgba(255,255,255,.85);align-self:flex-end}
+.tst.featured .sig b{color:#fff}
+.t-left{grid-column:span 4;display:flex;flex-direction:column;gap:22px}
+.t-right{grid-column:span 8}
+.t-row{grid-column:span 4}
+
+/* ---------- invest ---------- */
+.invest{display:grid;grid-template-columns:1fr 1.15fr;gap:60px;max-width:1330px;margin:0 auto;align-items:center;overflow:visible}
+.invest h2{font-family:var(--f-head);font-size:clamp(40px,4.2vw,62px);font-weight:800;letter-spacing:-.04em;line-height:1.06}
+.invest h2 .grad{background:linear-gradient(92deg,var(--blue) 10%,var(--orange) 90%);-webkit-background-clip:text;background-clip:text;color:transparent;padding:.18em .08em;margin:-.18em -.08em}
+.invest p{color:var(--mut);font-size:14.5px;line-height:1.75;max-width:400px;margin:26px 0 36px}
+.devices{position:relative}
+.dev-img{display:block;width:112%;max-width:none;margin-left:auto;will-change:transform}
+
+/* ---------- stay ---------- */
+.stay{position:relative;padding:120px 56px;overflow:hidden}
+.stay img.bg{position:absolute;inset:0;width:100%;height:115%;object-fit:cover}
+.stay::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,10,16,.55),rgba(8,10,16,.35))}
+.stay-in{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:60px;max-width:1330px;margin:0 auto;align-items:center}
+.stay h2{font-family:var(--f-head);color:#fff;font-size:clamp(34px,3.4vw,50px);font-weight:800;letter-spacing:-.035em}
+.stay-r h3{color:#fff;font-family:var(--f-head);font-size:clamp(20px,1.9vw,27px);font-weight:700;letter-spacing:-.02em;line-height:1.4;max-width:430px}
+.nl-form{display:flex;align-items:center;gap:16px;margin-top:44px;max-width:430px;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:12px;position:relative;transition:border-color .3s}
+.nl-form::after{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.nl-form:focus-within::after{transform:scaleX(1)}
+.nl-form input{flex:1;background:none;border:0;outline:0;color:#fff;font-size:15px;font-family:inherit}
+.nl-form input::placeholder{color:rgba(255,255,255,.55)}
+.nl-form button{width:34px;height:34px;color:#fff;display:flex;align-items:center;justify-content:center;transition:transform .3s var(--ease)}
+.nl-form button:hover{transform:translateX(6px)}
+.nl-ok{color:#7ee2a8;font-size:13.5px;margin-top:14px;height:16px;opacity:0;transition:opacity .4s}
+.nl-ok.show{opacity:1}
+
+/* ---------- footer ---------- */
+.footer{background:var(--navy);color:#fff;padding:70px 56px 50px;position:relative}
+.f-top{display:flex;justify-content:space-between;align-items:center;max-width:1330px;margin:0 auto;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.1)}
+.f-top .brand b{color:#fff}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;font-weight:600;font-size:13.5px;padding:11px 24px;border-radius:99px;transition:transform .3s var(--ease),box-shadow .3s}
+.pill:hover{transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(249,125,0,.5)}
+.f-cols{display:grid;grid-template-columns:1.3fr 1fr 1fr .8fr;gap:40px;max-width:1330px;margin:0 auto;padding:56px 0 80px}
+.f-cols h5{font-size:14.5px;font-weight:700;margin-bottom:22px}
+.f-cols a,.f-cols p{display:block;color:#8b90a5;font-size:13px;line-height:2.15;transition:color .2s,translate .2s}
+.f-cols a:hover{color:var(--orange);translate:4px 0}
+.f-soc{display:flex;gap:12px}
+.f-soc a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;transition:.3s}
+.f-soc a:hover{background:var(--orange);transform:translateY(-3px)}
+.f-soc svg{width:15px;height:15px;color:#fff}
+.f-bot{display:flex;gap:60px;max-width:1330px;margin:0 auto;color:#5c6178;font-size:12px}
+
+/* ---------- fab ---------- */
+.fab{position:fixed;right:34px;bottom:34px;width:54px;height:54px;border-radius:50%;background:#fff;box-shadow:0 14px 34px -8px rgba(10,15,40,.35);display:flex;align-items:center;justify-content:center;z-index:90;opacity:0;transform:scale(.6);transition:opacity .4s,transform .4s var(--ease);pointer-events:none}
+.fab.show{opacity:1;transform:scale(1);pointer-events:auto}
+.fab svg.arr{width:18px;height:18px;color:#0d0f14}
+.fab svg.ring{position:absolute;inset:-1px;width:56px;height:56px;transform:rotate(-90deg)}
+.fab svg.ring circle{fill:none;stroke:var(--orange);stroke-width:2.5;stroke-dasharray:163;stroke-dashoffset:163}
+.fab:hover{background:var(--orange)}
+.fab:hover svg.arr{color:#fff}
+
+/* ---------- reveal defaults ---------- */
+[data-reveal]{opacity:0;transform:translateY(46px)}
+.sec-h .w{display:inline-block;overflow:hidden;vertical-align:bottom}
+.sec-h .w>i{display:inline-block;font-style:normal;transform:translateY(115%)}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+/* instant verification mode */
+.instant [data-reveal],.instant .feat li,.instant .stat,.instant .sub-card,.instant .cert,.instant .wcard,.instant .exp-it,.instant .res-card,.instant .tst{opacity:1!important;transform:none!important}
+.instant .hero-h .w>i,.instant .sec-h .w>i{transform:none!important}
+.instant #heroBadge,.instant #heroImg,.instant .hero-sub,.instant .hero-cta{opacity:1!important;transform:none!important}
+.instant .hslide{transition:none}
+.instant .hslides{transform:none!important}
+.instant .m-item{transition:none;opacity:1!important;transform:none!important}
+.instant .m-menu,.instant .m-menu::before{transition:none}
+.instant .m-sub{transition:none}
+.instant .hero{min-height:760px}
+.instant .about-txt{opacity:1!important;transform:none!important}
+.instant .about-txt .hl::after{transform:scaleX(1)}
+
+/* ---------- responsive ---------- */
+@media(max-width:1080px){
+  .sec{padding:80px 34px}
+  .nav-in{padding:0 30px}
+  .about-grid{grid-template-columns:1fr;gap:56px}
+  .subs-grid{grid-template-columns:repeat(2,1fr)}
+  .cert-grid{grid-template-columns:repeat(2,1fr)}
+  .w1,.w2,.w3,.w4,.w5{grid-column:span 12}
+  .exp-grid{grid-template-columns:repeat(2,1fr)}
+  .invest{grid-template-columns:1fr;gap:20px}
+  .devices{max-width:640px}
+  .dev-img{width:100%}
+  .t-left{grid-column:span 5}.t-right{grid-column:span 7}
+  .t-row{grid-column:span 6}
+  .stay-in{grid-template-columns:1fr}
+  .f-cols{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:760px){
+  .nav-links,.nav-cta .login{display:none}
+  .burger{display:flex}
+  .hero{grid-template-columns:1fr}
+  .hero-r{min-height:52vw}
+  .hero-l{padding:80px 30px 60px}
+  .stats{grid-template-columns:repeat(2,1fr);gap:40px 0}
+  .subs-grid{grid-template-columns:1fr}
+  .cert-grid{grid-template-columns:1fr}
+  .exp-grid{grid-template-columns:1fr;gap:44px}
+  .t-left,.t-right,.t-row{grid-column:span 12}
+  .tst.featured{min-height:340px}
+  .tst.featured p{max-width:100%;font-size:17px}
+  .tst.featured .sig{align-self:flex-start}
+  .res-card{grid-template-columns:1fr}
+  .res-r{min-height:170px}
+  .sec{padding:64px 22px}
+  .stay{padding:80px 22px}
+  .footer{padding:60px 26px 40px}
+  .f-cols{grid-template-columns:1fr;gap:36px;padding:44px 0 60px}
+  .devices{max-width:420px;margin:0 auto}
+  .f-top{flex-direction:row}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-shutter"></div>
+  <div class="ld-in">
+    <div class="ld-logo">
+      <img src="assets/fsl-logo-white.png" alt="FSL Capital">
+    </div>
+    <div class="ld-bar"><i></i></div>
+    <div class="ld-num">00</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a href="#" class="brand" aria-label="FSL Capital">
+      <img src="assets/fsl-logo.png" alt="FSL Capital">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li>
+        <button class="nl-btn" type="button">Services <svg class="chev" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="mega">
+          <div class="mega-l">
+            <div class="mega-cols">
+              <div class="mcol">
+                <h6>Capital Market &amp; Investment Banking</h6>
+                <a class="mitem" href="#expertise"><span class="mi"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/></svg></span>Security Trading</a>
+                <a class="mitem" href="#expertise"><span class="mi"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 019 9h-9V3z"/><path d="M12 12L4.6 19A9 9 0 1012 3"/></svg></span>Asset Management</a>
+                <a class="mitem" href="#expertise"><span class="mi"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9.5 21v-6h5v6"/></svg></span>Issuing House &amp; Financial Advisory</a>
+                <a class="mitem" href="#expertise"><span class="mi"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h5M10 17h5"/></svg></span>Registrars</a>
+              </div>
+              <div class="mcol">
+                <h6>Financial Services</h6>
+                <a class="mitem" href="#expertise"><span class="mi"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg></span>Insurance Brokage</a>
+                <a class="mitem" href="#expertise"><span class="mi"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg></span>Credit Solutions</a>
+                <h6 class="sub">Other Strategic Businesses</h6>
+                <a class="mitem" href="#subsidiaries"><span class="mi"><svg viewBox="0 0 24 24"><circle cx="8.5" cy="8" r="3"/><path d="M3 20c0-3.3 2.5-6 5.5-6s5.5 2.7 5.5 6"/><circle cx="17" cy="8.5" r="2.5"/><path d="M15.5 14.2c3 .6 5.2 3 5.2 5.8"/></svg></span>Outsourcing &amp; Management services</a>
+              </div>
+            </div>
+            <div class="mega-cta"><p>Start in minutes. Start growing your money</p><a href="#invest">Get started</a></div>
+          </div>
+          <div class="mega-r">
+            <h6>Products</h6>
+            <div class="prods">
+              <a class="prod" href="#invest"><img src="assets/prod-mmf.png" alt="Money Market Funds"><span class="pl">Money Market Funds<svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
+              <a class="prod" href="#invest"><img src="assets/prod-euro.png" alt="Eurobonds Funds"><span class="pl">Eurobonds Funds<svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="#subsidiaries">Subsidiaries</a></li>
+      <li>
+        <button class="nl-btn" type="button">Insight <svg class="chev" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="drop">
+          <a href="#resources">Market Insights <span class="arr">→</span></a>
+          <a href="#resources">Research Notes <span class="arr">→</span></a>
+          <a href="#resources">Press Releases <span class="arr">→</span></a>
+        </div>
+      </li>
+      <li><a href="#invest">Careers</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#" class="login">Login</a>
+      <a href="#" class="btn btn-o magnetic"><span>Sign up</span></a>
+      <button class="burger" id="burger" aria-label="Menu"><i></i><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+<nav class="m-menu" id="mmenu">
+  <div class="m-label">Menu</div>
+  <a class="m-item" href="#about"><i>01</i>About<svg class="m-arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <button class="m-item m-acc" id="mAcc" type="button" aria-expanded="false"><i>02</i>Services<svg class="m-arr" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+  <div class="m-sub" id="mSub">
+    <a href="#expertise">Security Trading</a>
+    <a href="#expertise">Asset Management</a>
+    <a href="#expertise">Issuing House &amp; Financial Advisory</a>
+    <a href="#expertise">Registrars</a>
+    <a href="#expertise">Insurance Brokage</a>
+    <a href="#expertise">Credit Solutions</a>
+    <a href="#subsidiaries">Outsourcing &amp; Management services</a>
+  </div>
+  <a class="m-item" href="#subsidiaries"><i>03</i>Subsidiaries<svg class="m-arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <a class="m-item" href="#resources"><i>04</i>Insight<svg class="m-arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <a class="m-item" href="#invest"><i>05</i>Careers<svg class="m-arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <a class="m-item" href="#contact"><i>06</i>Contact<svg class="m-arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <div class="m-cta">
+    <a class="btn btn-o" href="#"><span>Sign up</span></a>
+    <a class="btn btn-k" href="#"><span>Client Login</span></a>
+  </div>
+  <div class="m-foot">
+    <a href="mailto:help@logoipsum.com">help@logoipsum.com</a>
+    <span>+1 891 989-11-91</span>
+  </div>
+</nav>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-l">
+      <span class="hero-badge" id="heroBadge">Operating for over 35+ years</span>
+      <h1 class="hero-h" id="heroH">FSL Capital Limited</h1>
+      <p class="hero-sub">Providing Expert Investment Banking and Securities Trading Services Since 1990.</p>
+      <div class="hero-cta">
+        <a class="btn btn-k magnetic" href="#"><span>Client Login</span></a>
+        <a class="lm" href="#about">Learn more <span>→</span></a>
+      </div>
+    </div>
+    <div class="hero-r">
+      <div class="hslides">
+        <img class="hslide" src="assets/hero-lagos-1.jpg" alt="Lagos skyline" id="heroImg">
+        <img class="hslide" src="assets/hero-lagos-2.jpg" alt="Victoria Island marina, Lagos">
+        <img class="hslide" src="assets/hero-lagos-3.jpg" alt="Lagos lagoon at dusk">
+      </div>
+      <div class="hero-shield">
+        <svg width="24" height="24" viewBox="0 0 40 40"><path d="M6 4h12c-3.4 5-4.3 10.5-3 16H6c-2.2 0-4-1.8-4-4V8c0-2.2 1.8-4 4-4z" fill="#F97D00"/><path d="M20 4h14c2.2 0 4 1.8 4 4v9c0 2.2-1.8 4-4 4H19c-1.3-5.5-.4-12 1-17z" fill="#16337e"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="sec dark" id="about">
+    <div class="about-grid">
+      <p class="about-txt" id="aboutTxt">FSL Capital Limited is a diversified holding company with a legacy of excellence since <span class="hl">1989.</span> Following its strategic restructuring, the Group has evolved into a <span class="hl">multi-sector powerhouse,</span> creating long-term value through strategic investments, operational excellence, and specialized business support.</p>
+      <div>
+        <ul class="feat">
+          <li>
+            <svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6M9 12h.01M15 12h.01"/></svg>
+            <div><h4>Diversified Portfolio</h4><p>A strong ecosystem of companies operating across multiple high-growth industries.</p></div>
+          </li>
+          <li>
+            <svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg>
+            <div><h4>Strategic Value Creation</h4><p>A strong ecosystem of companies operating across multiple high-growth industries.</p></div>
+          </li>
+          <li>
+            <svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 4 5.7 4 9s-1.5 6.3-4 9c-2.5-2.7-4-5.7-4-9s1.5-6.3 4-9z"/></svg>
+            <div><h4>Diversified Portfolio</h4><p>A strong ecosystem of companies operating across multiple high-growth industries.</p></div>
+          </li>
+        </ul>
+        <a href="#expertise" class="btn btn-b about-cta magnetic"><span>Learn more</span><svg class="b-arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b data-count="35">0</b><span>Years of Excellence</span></div>
+      <div class="stat"><b data-count="6">0</b><span>Specialized Businesses</span></div>
+      <div class="stat"><b data-count="100" data-sfx="%">0</b><span>SEC Regulated</span></div>
+      <div class="stat"><b>24<span class="sfx">/7</span></b><span>Digital Assets</span></div>
+    </div>
+  </section>
+
+  <!-- SUBSIDIARIES -->
+  <section class="sec" id="subsidiaries">
+    <div class="subs-head">
+      <h2 class="sec-h split">One Group. <em class="blue">Six Specialized Companies.</em></h2>
+      <p class="sec-sub" data-reveal>Since 1990, FSL Capital Limited has grown into a diversified financial services group, combining deep industry expertise with innovative financial solutions.</p>
+    </div>
+    <div class="subs-grid">
+      <a class="sub-card" href="#">
+        <div class="sub-media"><img src="assets/card-invest.png" alt="FSL Invest app"></div>
+        <div class="sub-body"><h3>FSL Invest</h3><p>Helping businesses raise capital and investors access opportunities</p><span class="sub-link"><span class="sq"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>Learn more</span></div>
+      </a>
+      <a class="sub-card" href="#">
+        <div class="sub-media"><img src="assets/card-asset.png" alt="FSL Asset Management dashboard"></div>
+        <div class="sub-body"><h3>FSL Asset Management</h3><p>Professional portfolio management, mutual funds, and investment strategies.</p><span class="sub-link"><span class="sq"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>Learn more</span></div>
+      </a>
+      <a class="sub-card" href="#">
+        <div class="sub-media"><img src="assets/card-finance.png" alt="FSL Finance team"></div>
+        <div class="sub-body"><h3>FSL Finance</h3><p>Flexible financial solutions designed to support businesses, entrepreneurs.</p><span class="sub-link"><span class="sq"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>Learn more</span></div>
+      </a>
+      <a class="sub-card" href="#">
+        <div class="sub-media"><img src="assets/card-insurance.png" alt="FSL Insurance Brokers"></div>
+        <div class="sub-body"><h3>FSL Insurance Brokers</h3><p>Comprehensive insurance advisory and brokerage solutions for individuals</p><span class="sub-link"><span class="sq"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>Learn more</span></div>
+      </a>
+      <a class="sub-card" href="#">
+        <div class="sub-media"><img src="assets/card-registrars.png" alt="FSL Registrars"></div>
+        <div class="sub-body"><h3>FSL Registrars</h3><p>Professional portfolio management, mutual funds, and investment strategies</p><span class="sub-link"><span class="sq"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>Learn more</span></div>
+      </a>
+      <a class="sub-card" href="#">
+        <div class="sub-media"><img src="assets/card-mgmt.png" alt="FSL Management Services"></div>
+        <div class="sub-body"><h3>FSL Management Services</h3><p>Professional portfolio management, mutual funds, and investment strategies</p><span class="sub-link"><span class="sq"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>Learn more</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="sec certs">
+    <h2 class="sec-h split">Certified &amp; Complaint</h2>
+    <div class="cert-grid">
+      <div class="cert"><h4>NASD</h4><p>Affiliation and alignment with the NASD OTC Securities Exchange indicate adherence.</p>
+        <svg class="emblem" viewBox="0 0 32 32"><rect width="32" height="32" rx="5" fill="#c9ccd2"/><path d="M16 7l7.5 9L16 25l-7.5-9z" fill="#fff"/></svg></div>
+      <div class="cert"><h4>TNSE</h4><p>Recognition or compliance associated with the Nigerian Stock Exchange reflects adherence to formal capital market.</p>
+        <svg class="emblem" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="none" stroke="#c9ccd2" stroke-width="3"/><circle cx="16" cy="16" r="8.5" fill="none" stroke="#c9ccd2" stroke-width="2"/><path d="M16 9.5l1.7 3.9 4.2.4-3.2 2.7 1 4.1-3.7-2.4-3.7 2.4 1-4.1-3.2-2.7 4.2-.4z" fill="#c9ccd2"/></svg></div>
+      <div class="cert"><h4>NDPR Audit</h4><p>Compliance with the Nigeria Data Protection Regulation (NDPR) audit confirms that data handling</p>
+        <svg class="emblem" viewBox="0 0 32 32"><path d="M16 2l11 4v8c0 7-4.6 12-11 15C9.6 26 5 21 5 14V6l11-4z" fill="#c9ccd2"/><circle cx="16" cy="12.5" r="3" fill="#fff"/><path d="M14.6 14.8h2.8l1.1 7h-5z" fill="#fff"/></svg></div>
+      <div class="cert"><h4>PenCom</h4><p>Regulatory recognition by the National Pension Commission (PenCom) ensures that pension-related processes and administrative standards strictly follow national pension reform guidelines and employee welfare regulations.</p>
+        <svg class="emblem" viewBox="0 0 32 32"><path d="M16 2.5l10.5 5v3h-21v-3z" fill="#c9ccd2"/><path d="M8 12.5h3v10.5H8zM14.5 12.5h3v10.5h-3zM21 12.5h3v10.5h-3z" fill="#c9ccd2"/><rect x="5" y="25" width="22" height="3" rx="1" fill="#c9ccd2"/></svg></div>
+    </div>
+  </section>
+
+  <!-- QUOTE 1 -->
+  <section class="sec">
+    <div class="quote">
+      <svg class="qmark" viewBox="0 0 24 24" fill="currentColor"><path d="M10 7H6a3 3 0 00-3 3v7h7v-7H6.5A1.5 1.5 0 018 8.5h2V7zm11 0h-4a3 3 0 00-3 3v7h7v-7h-3.5a1.5 1.5 0 011.5-1.5h2V7z"/></svg>
+      <p data-reveal>Not only does FSL Capital provide the fastest turnaround time for capital raising and asset management integration, but they are also the most strategic financial partner we've worked with</p>
+      <div class="who" data-reveal><img src="assets/a3.jpg" alt="Roger Quach"><div><b>Roger Quach</b><span>Chief Financial Officer</span></div></div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="sec dark">
+    <div class="why-head">
+      <h2 class="sec-h split">Why Choose Us?</h2>
+      <p class="sec-sub" data-reveal>We are flexible, and professional and work with your plan to sustain your business growth. We are designed to support and enhance customer business growth.</p>
+    </div>
+    <div class="why-grid">
+      <div class="wcard w1" data-tilt>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div><h4>Regulatory compliance</h4><p>Being registered with the SEC, we adhere to strict regulatory standards, ensuring that all our operations are compliant and transparent.</p></div>
+      </div>
+      <div class="wcard w2" data-tilt>
+        <img class="bg" src="assets/why-trust.jpg" alt="Skyscrapers"><span class="ovl"></span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 12l2.5 2.5L16 9M7 4h10l2 3v13H5V7l2-3z"/><path d="M5 7h14"/></svg></div>
+        <div><h4>Reputation and Trust</h4><p>We have the requisite experience to handle your expectations.</p></div>
+      </div>
+      <div class="wcard w3" data-tilt>
+        <img class="bg" src="assets/why-expertise.jpg" alt="Team working"><span class="ovl"></span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M9 9h6M9 12h4"/></svg></div>
+        <div><h4>Proven Expertise and Experience</h4><p>Established in 1990, FSL Capital Limited has over three decades of experience in the investment banking and securities trading industry.</p></div>
+      </div>
+      <div class="wcard w4" data-tilt>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.8.6 1.5 1.4 1.5 2.4V17h4v-.7c0-1 .7-1.8 1.5-2.4A6 6 0 0012 3z"/></svg></div>
+        <div><h4>Innovative Solutions and Strategies</h4><p>We leverage cutting-edge technology and market insights to provide innovative investment solutions.</p></div>
+      </div>
+      <div class="wcard w5" data-tilt>
+        <svg class="shieldwm" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="0.7"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V9M9 19V5M14 19v-8M19 19V7"/></svg></div>
+        <div><h4>Comprehensive Financial Services</h4><p>We offer a wide range of services including Broker/Dealer, Issuing House, Portfolio Management, and Venture Capital.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE 2 (dark) -->
+  <section class="sec dark" style="padding-top:20px">
+    <div class="quote on-dark">
+      <p data-reveal>Not only does FSL Capital provide the fastest turnaround time for capital raising and asset management integration, but they are also the most strategic financial partner we've worked with</p>
+      <div class="who" data-reveal><img src="assets/a3.jpg" alt="Roger Quach"><div><b>Roger Quach</b><span>Chief Financial Officer</span></div></div>
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section class="sec dark" id="expertise" style="padding-top:30px">
+    <div class="exp-wrap">
+      <svg class="exp-deco" viewBox="0 0 200 160" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1">
+        <path d="M40 20h120M40 50h120M40 80h120M40 110h120M40 140h120M60 5v150M100 5v150M140 5v150" opacity=".5"/>
+        <path d="M100 30l34 12v18c0 20-15 34-34 42-19-8-34-22-34-42V42l34-12z"/>
+        <path d="M88 62l8 8 16-16"/>
+        <rect x="36" y="76" width="8" height="8" fill="rgba(255,255,255,.14)" stroke="none"/>
+        <rect x="150" y="16" width="8" height="8" fill="rgba(255,255,255,.14)" stroke="none"/>
+      </svg>
+      <div class="exp-head">
+        <h2 class="sec-h split">Expertise and Services</h2>
+        <p class="sec-sub" data-reveal>Tailored Financial Solutions Designed to Achieve Your Unique Financial Goals and Ensure Long-Term Success.</p>
+      </div>
+      <div class="exp-grid">
+        <div class="exp-it">
+          <div class="ei"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg></div>
+          <h4>Securities Trading</h4><p>Access local and international capital markets with efficient execution, competitive pricing, and robust portfolio management.</p>
+        </div>
+        <div class="exp-it">
+          <div class="ei"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2M3 13h18"/></svg></div>
+          <h4>Financial Advisory / Issuing House</h4><p>Expert guidance on capital raising, mergers and acquisitions, debt restructuring, and corporate finance strategies.</p>
+        </div>
+        <div class="exp-it">
+          <div class="ei"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 12A9 9 0 1112 3v9h9z"/><path d="M15.5 2.6A9 9 0 0121.4 8.5h-5.9V2.6z"/></svg></div>
+          <h4>Asset Management</h4><p>Customized investment strategies designed to grow, protect, and preserve your wealth across generations.</p>
+        </div>
+        <div class="exp-it">
+          <div class="ei"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+          <h4>Credit Solution</h4><p>Flexible lending options structured to provide liquidity, fund expansion, and optimize cash flow for your business.</p>
+        </div>
+        <div class="exp-it">
+          <div class="ei"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3h9l4 4v14H6V3z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg></div>
+          <h4>Registrars</h4><p>Comprehensive share registry administration, proxy solicitation, dividend processing, and stakeholder data management.</p>
+        </div>
+        <div class="exp-it">
+          <div class="ei"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h4>Insurance brokerage services</h4><p>Independent risk analysis and comprehensive coverage procurement to safeguard your assets against unforeseen liabilities.</p>
+        </div>
+      </div>
+      <div class="exp-cta"><a class="btn btn-b magnetic" href="#"><span>Learn more</span><svg class="b-arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section class="sec" id="resources">
+    <div class="res-head">
+      <h2 class="sec-h split">Our resources</h2>
+      <p class="sec-sub" data-reveal>We are flexible, and professional and work with your plan to sustain your business growth. We are designed to support and enhance customer business growth.</p>
+    </div>
+    <div class="res-list">
+      <a class="res-jump" href="#resources" aria-label="View all resources"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <a class="res-card" href="#resources">
+        <div class="res-l"><p>Unlock working capital with tailored credit and financing options built around your business needs.</p></div>
+        <div class="res-r"><img src="assets/res-money.jpg" alt="US dollar bills"></div>
+      </a>
+      <a class="res-card" href="#resources">
+        <div class="res-l"><p>Grow your wealth steadily with professionally managed funds and long-term investment strategies.</p></div>
+        <div class="res-r"><img src="assets/res-plant.jpg" alt="Seedling growing from coins"></div>
+      </a>
+      <a class="res-card" href="#resources">
+        <div class="res-l"><p>Stay ahead of the market with expert research, insights, and data-driven trading support.</p></div>
+        <div class="res-r"><img src="assets/res-chart.jpg" alt="Laptop showing market chart"></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL WALL -->
+  <section class="sec love">
+    <h2 class="sec-h split">People love us. <span class="dim">But don't take it from us</span></h2>
+    <p class="sec-sub" data-reveal>An Over-The-Counter market and Self-Regulatory Organisation, registered with and regulated by Nigeria's SEC. It's Nigeria's second stock market.</p>
+    <div class="tst-grid">
+      <div class="t-left">
+        <div class="tst"><div class="co">Vertex Technologies</div>
+          <p>Not only does FSL Capital provide the fastest turnaround time for capital raising and asset management integration, but they are also the most strategic financial partner we've worked with</p>
+          <div class="who"><img src="assets/a3.jpg" alt=""><div><b>Roger Quach</b><span>Chief Financial Officer</span></div></div></div>
+      </div>
+      <div class="t-right">
+        <div class="tst featured">
+          <img class="bg" src="assets/testi-bg.jpg" alt="Office" id="featBg">
+          <p>FSL Capital completely transformed our treasury operations and structured a debt solution that gave us the exact liquidity we needed to fund our regional expansion. Their advisory team is world-class.</p>
+          <div class="sig"><b>Marcus Vance</b> | Chief Executive Officer</div>
+        </div>
+      </div>
+      <div class="tst t-row"><div class="co">GreenField Agro</div>
+        <p>We were dealing with fragmented investments and complex cross-border trade transactions. We needed a financial house that could streamline everything under one roof—and FSL Capital delivered</p>
+        <div class="who"><img src="assets/a1.jpg" alt=""><div><b>Roger Quach</b><span>Managing Director</span></div></div></div>
+      <div class="tst t-row"><div class="co">Zenith Health</div>
+        <p>From handling our corporate registry needs to securing comprehensive insurance brokerage services, FSL Capital provides a seamless ecosystem of financial solutions that lets us focus on scaling our business.</p>
+        <div class="who"><img src="assets/a2.jpg" alt=""><div><b>David Heaton</b><span>Chief Financial Officer</span></div></div></div>
+      <div class="tst t-row"><div class="co">Vertex Technologies</div>
+        <p>Not only does FSL Capital provide the fastest turnaround time for capital raising and asset management integration, but they are also the most strategic financial partner we've worked with</p>
+        <div class="who"><div class="av">AB</div><div><b>Amina Bello</b><span>Chief Financial Officer</span></div></div></div>
+    </div>
+  </section>
+
+  <!-- INVEST -->
+  <section class="sec" id="invest" style="overflow:hidden">
+    <div class="invest">
+      <div>
+        <h2 class="split">Invest<br><span class="grad">wherever<br>you are</span></h2>
+        <p data-reveal>Stay connected to your portfolio and manage your investments seamlessly across all your devices.</p>
+        <a class="btn btn-b magnetic" data-reveal href="#"><span>Get started</span><svg class="b-arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="devices" id="devices">
+        <img class="dev-img" src="assets/devices.png" alt="FSL web dashboard on a monitor with the FSL mobile app on a phone" data-depth="18">
+      </div>
+    </div>
+  </section>
+
+  <!-- STAY UPDATED -->
+  <section class="stay" id="contact">
+    <img class="bg" src="assets/stay.jpg" alt="Person typing" id="stayBg">
+    <div class="stay-in">
+      <h2 class="split">Stay updated</h2>
+      <div class="stay-r">
+        <h3 data-reveal>Get Update from FSL. No spam, unsubscribe anytime</h3>
+        <form class="nl-form" id="nlForm" data-reveal>
+          <input type="email" placeholder="Name" required aria-label="Email">
+          <button type="submit" aria-label="Subscribe"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </form>
+        <div class="nl-ok" id="nlOk">You're on the list — welcome aboard.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="f-top">
+      <a href="#" class="brand">
+        <img src="assets/fsl-logo-white.png" alt="FSL Capital">
+      </a>
+      <a class="pill magnetic" href="#">Client login</a>
+    </div>
+    <div class="f-cols">
+      <div><h5>Address</h5><p>2972 Westheimer Rd. Santa Ana,<br>Illinois 85486</p></div>
+      <div><h5>Info</h5>
+        <a href="#">For patients</a><a href="#">Services</a><a href="#">Experts</a><a href="#">Illnesses</a><a href="#">Articles</a><a href="#">Feedback</a><a href="#">Vacancies</a>
+      </div>
+      <div><h5>Contact us</h5><p>+1 891 989-11-91</p><a href="mailto:help@logoipsum.com">help@logoipsum.com</a></div>
+      <div><h5>&nbsp;</h5><div class="f-soc">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.3-.4-4.8a2.5 2.5 0 00-1.8-1.8C18.3 5 12 5 12 5s-6.3 0-7.8.4A2.5 2.5 0 002.4 7.2C2 8.7 2 12 2 12s0 3.3.4 4.8c.2.9.9 1.6 1.8 1.8 1.5.4 7.8.4 7.8.4s6.3 0 7.8-.4a2.5 2.5 0 001.8-1.8c.4-1.5.4-4.8.4-4.8zM10 15.5v-7l6 3.5-6 3.5z"/></svg></a>
+      </div></div>
+    </div>
+    <div class="f-bot"><span>© 2026 — Copyright</span><a href="#" style="color:#5c6178">Certificate</a></div>
+  </footer>
+</main>
+
+<button class="fab" id="fab" aria-label="Back to top">
+  <svg class="ring" viewBox="0 0 56 56"><circle cx="28" cy="28" r="26" id="fabRing"/></svg>
+  <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const INSTANT=/[?&]instant\b/.test(location.search);
+if(INSTANT){document.getElementById('loader').remove();document.body.classList.add('instant');}
+
+
+
+/* ---------- smooth scroll ---------- */
+let lenis = null;
+if (!reduce && window.Lenis){
+  lenis = new Lenis({ lerp:.09, wheelMultiplier:1 });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t*1000));
+  gsap.ticker.lagSmoothing(0);
+}
+const scrollTo = el => lenis ? lenis.scrollTo(el, {offset:-90}) : el.scrollIntoView({behavior:'smooth'});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const href=a.getAttribute('href');
+    if(href.length<2){e.preventDefault();return;}
+    const t=document.querySelector(href);
+    if(t){e.preventDefault();document.body.classList.remove('menu-open');scrollTo(t);}
+  });
+});
+
+/* ---------- split headings ---------- */
+function split(el){
+  const parts=[];
+  const walk=(n,cls)=>{
+    if(n.nodeType===3){n.textContent.split(/\s+/).filter(Boolean).forEach(w=>parts.push({w,e:cls}));}
+    else if(n.tagName==='BR'){parts.push({br:1});}
+    else{n.childNodes.forEach(c=>walk(c,cls||n.className||''));}
+  };
+  el.childNodes.forEach(n=>walk(n,''));
+  el.innerHTML=parts.map(p=>p.br?'<br>':`<span class="w"><i class="${p.e}">${p.w}</i></span>`).join(' ');
+}
+document.querySelectorAll('.split, .hero-h').forEach(split);
+
+/* ---------- nav behavior ---------- */
+const nav=document.getElementById('nav');
+let lastY=0;
+function onScroll(y){
+  nav.classList.toggle('scrolled',y>10);
+  if(y>220&&y>lastY+4){nav.classList.add('hide');}
+  else if(y<lastY-4||y<220){nav.classList.remove('hide');}
+  lastY=y;
+  // fab + progress ring
+  const h=document.documentElement.scrollHeight-innerHeight;
+  const pr=Math.min(1,y/h);
+  document.getElementById('fabRing').style.strokeDashoffset=163-163*pr;
+  document.getElementById('fab').classList.toggle('show',y>innerHeight*.8);
+}
+if(lenis){lenis.on('scroll',e=>onScroll(e.scroll));}else{addEventListener('scroll',()=>onScroll(scrollY),{passive:true});}
+document.getElementById('fab').addEventListener('click',()=>lenis?lenis.scrollTo(0):scrollTo(document.body));
+/* desktop dropdowns — click toggle for touch devices (hover already handled in CSS) */
+document.querySelectorAll('.nav-links .nl-btn').forEach(btn=>{
+  btn.addEventListener('click',e=>{
+    e.stopPropagation();
+    const li=btn.parentElement,wasOpen=li.classList.contains('open');
+    document.querySelectorAll('.nav-links li.open').forEach(l=>l.classList.remove('open'));
+    if(!wasOpen)li.classList.add('open');
+  });
+});
+document.addEventListener('click',e=>{
+  if(e.target.closest('.nl-btn'))return;
+  document.querySelectorAll('.nav-links li.open').forEach(l=>l.classList.remove('open'));
+});
+const mAcc=document.getElementById('mAcc'),mSub=document.getElementById('mSub');
+mAcc.addEventListener('click',()=>{
+  const open=mSub.classList.toggle('open');
+  mAcc.classList.toggle('open',open);
+  mAcc.setAttribute('aria-expanded',open);
+});
+document.getElementById('burger').addEventListener('click',()=>{
+  document.body.classList.toggle('menu-open');
+  if(!document.body.classList.contains('menu-open')){mSub.classList.remove('open');mAcc.classList.remove('open');}
+});
+
+/* ---------- loader ---------- */
+const tl0=gsap.timeline();
+const num=document.querySelector('#loader .ld-num'),bar=document.querySelector('#loader .ld-bar i');
+tl0.to('#loader .ld-logo',{y:0,opacity:1,duration:.6,ease:'power3.out'})
+   .to({v:0},{v:100,duration:reduce?.01:1.5,ease:'power2.inOut',onUpdate:function(){const v=Math.round(this.targets()[0].v);num.textContent=String(v).padStart(2,'0');bar.style.width=v+'%';}})
+   .to('#loader .ld-in',{y:-30,opacity:0,duration:.4,ease:'power2.in'})
+   .to('#loader .ld-shutter',{scaleY:1,duration:.5,ease:'power3.inOut'},'<')
+   .set('#loader',{display:'none'})
+   .add(intro,'-=.15');
+
+/* ---------- hero intro ---------- */
+function intro(){
+  gsap.to('#heroH .w>i',{y:0,duration:1,stagger:.07,ease:'power4.out'});
+  gsap.fromTo('#heroBadge',{x:-40,opacity:0},{x:0,opacity:1,duration:.8,ease:'power3.out',delay:.15});
+  gsap.to('.hslides',{scale:1,duration:1.6,ease:'power3.out',delay:.1});
+  gsap.fromTo('.hero-r',{clipPath:'inset(0 0 0 100%)'},{clipPath:'inset(0 0 0 0)',duration:1.1,ease:'power4.inOut'});
+  gsap.to('.hero-sub,.hero-cta',{opacity:1,y:0,duration:.9,stagger:.15,ease:'power3.out',delay:.5});
+}
+gsap.set('.hero-sub,.hero-cta',{opacity:0,y:24});
+
+/* ---------- scroll reveals ---------- */
+ScrollTrigger.batch('[data-reveal]',{
+  start:'top 88%',
+  onEnter:b=>gsap.to(b,{opacity:1,y:0,duration:.9,stagger:.12,ease:'power3.out',overwrite:true})
+});
+document.querySelectorAll('.sec-h.split').forEach(h=>{
+  gsap.to(h.querySelectorAll('.w>i'),{y:0,duration:.9,stagger:.06,ease:'power4.out',
+    scrollTrigger:{trigger:h,start:'top 86%'}});
+});
+gsap.to('#aboutTxt',{scrollTrigger:{trigger:'#aboutTxt',start:'top 75%',onEnter:()=>document.getElementById('aboutTxt').classList.add('in')}});
+gsap.fromTo('#aboutTxt',{opacity:0,y:40},{opacity:1,y:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:'#aboutTxt',start:'top 82%'}});
+gsap.to('.feat li',{opacity:1,y:0,duration:.8,stagger:.14,ease:'power3.out',scrollTrigger:{trigger:'.feat',start:'top 82%'}});
+gsap.to('.stat',{opacity:1,y:0,duration:.8,stagger:.1,ease:'power3.out',scrollTrigger:{trigger:'.stats',start:'top 85%'}});
+gsap.to('.sub-card',{opacity:1,y:0,duration:.85,stagger:.09,ease:'power3.out',scrollTrigger:{trigger:'.subs-grid',start:'top 82%'}});
+gsap.to('.cert',{opacity:1,y:0,duration:.8,stagger:.1,ease:'power3.out',scrollTrigger:{trigger:'.cert-grid',start:'top 85%'}});
+gsap.to('.wcard',{opacity:1,y:0,duration:.9,stagger:.12,ease:'power3.out',scrollTrigger:{trigger:'.why-grid',start:'top 80%'}});
+gsap.to('.exp-it',{opacity:1,y:0,duration:.8,stagger:.1,ease:'power3.out',scrollTrigger:{trigger:'.exp-grid',start:'top 82%'}});
+gsap.to('.res-card',{opacity:1,y:0,duration:.9,stagger:.14,ease:'power3.out',scrollTrigger:{trigger:'.res-list',start:'top 82%'}});
+gsap.to('.tst',{opacity:1,y:0,duration:.85,stagger:.1,ease:'power3.out',scrollTrigger:{trigger:'.tst-grid',start:'top 82%'}});
+
+/* ---------- count up ---------- */
+document.querySelectorAll('[data-count]').forEach(el=>{
+  const end=+el.dataset.count,sfx=el.dataset.sfx||'';
+  ScrollTrigger.create({trigger:el,start:'top 88%',once:true,onEnter:()=>{
+    gsap.to({v:0},{v:end,duration:1.6,ease:'power2.out',onUpdate:function(){el.innerHTML=Math.round(this.targets()[0].v)+`<span class="sfx">${sfx}</span>`;}});
+  }});
+});
+
+/* ---------- parallax ---------- */
+gsap.to('.hslides',{yPercent:12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+/* ---------- hero slideshow ---------- */
+const hslides=[...document.querySelectorAll('.hslide')];
+if(hslides.length>1){
+  let hcur=0;
+  const hgo=i=>{
+    hslides.forEach((s,j)=>{
+      s.classList.toggle('on',j===i);
+      if(j===i)gsap.fromTo(s,{scale:1.12},{scale:1.02,duration:7,ease:'none',overwrite:true});
+    });
+  };
+  hslides[0].classList.add('on');
+  gsap.fromTo(hslides[0],{scale:1.12},{scale:1.02,duration:7,ease:'none'});
+  setInterval(()=>{hcur=(hcur+1)%hslides.length;hgo(hcur)},5400);
+}
+gsap.to('#featBg',{yPercent:-12,ease:'none',scrollTrigger:{trigger:'.tst.featured',start:'top bottom',end:'bottom top',scrub:true}});
+gsap.to('#stayBg',{yPercent:-14,ease:'none',scrollTrigger:{trigger:'.stay',start:'top bottom',end:'bottom top',scrub:true}});
+
+/* ---------- device parallax ---------- */
+const dev=document.getElementById('devices');
+if(dev&&!reduce){
+  dev.addEventListener('mousemove',e=>{
+    const r=dev.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    dev.querySelectorAll('[data-depth]').forEach(el=>{
+      const d=+el.dataset.depth;
+      gsap.to(el,{x:x*d,y:y*d,duration:.7,ease:'power2.out'});
+    });
+  });
+  dev.addEventListener('mouseleave',()=>dev.querySelectorAll('[data-depth]').forEach(el=>gsap.to(el,{x:0,y:0,duration:.8,ease:'power3.out'})));
+  gsap.from('.dev-img',{y:90,opacity:0,scale:.96,duration:1.2,ease:'power3.out',scrollTrigger:{trigger:dev,start:'top 80%'}});
+}
+
+/* ---------- tilt cards ---------- */
+if(!reduce){
+  document.querySelectorAll('[data-tilt]').forEach(c=>{
+    c.addEventListener('mousemove',e=>{
+      const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      gsap.to(c,{rotateY:x*6,rotateX:-y*6,transformPerspective:900,duration:.5,ease:'power2.out'});
+    });
+    c.addEventListener('mouseleave',()=>gsap.to(c,{rotateX:0,rotateY:0,duration:.8,ease:'elastic.out(1,.5)'}));
+  });
+}
+
+/* ---------- magnetic buttons ---------- */
+if(!reduce){
+  document.querySelectorAll('.magnetic').forEach(b=>{
+    b.addEventListener('mousemove',e=>{
+      const r=b.getBoundingClientRect();
+      gsap.to(b,{x:(e.clientX-r.left-r.width/2)*.22,y:(e.clientY-r.top-r.height/2)*.3,duration:.4,ease:'power2.out'});
+    });
+    b.addEventListener('mouseleave',()=>gsap.to(b,{x:0,y:0,duration:.6,ease:'elastic.out(1,.4)'}));
+  });
+}
+
+/* ---------- newsletter ---------- */
+document.getElementById('nlForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const f=e.target,ok=document.getElementById('nlOk');
+  gsap.to(f,{opacity:.4,pointerEvents:'none',duration:.3});
+  setTimeout(()=>{ok.classList.add('show');f.reset();gsap.to(f,{opacity:1,pointerEvents:'auto',duration:.4});},700);
+  setTimeout(()=>ok.classList.remove('show'),5000);
+});
+</script>
+</body>
+</html>
