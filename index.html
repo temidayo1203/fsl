@@ -293,7 +293,8 @@ main{padding-top:72px}
 .tst .who .av{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px}
 .tst .who b{display:block;font-size:13.5px}
 .tst .who span{font-size:11.5px;color:var(--mut)}
-.tst.featured{position:relative;overflow:hidden;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;min-height:420px}
+.tst.featured{position:relative;overflow:hidden;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;min-height:420px;border:none;box-shadow:0 26px 48px -18px rgba(226,120,40,.5)}
+.tst.featured::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;box-shadow:inset 0 -60px 60px -30px rgba(232,124,44,.45);border-radius:inherit}
 .tst.featured img.bg{position:absolute;inset:0;width:100%;height:110%;object-fit:cover}
 .tst.featured::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,26,.42),rgba(10,14,26,.9))}
 .tst.featured>*{position:relative;z-index:2}
@@ -764,7 +765,7 @@ main{padding-top:72px}
         <div class="who"><img src="assets/a2.jpg" alt=""><div><b>David Heaton</b><span>Chief Financial Officer</span></div></div></div>
       <div class="tst t-row"><div class="co">Vertex Technologies</div>
         <p>Not only does FSL Capital provide the fastest turnaround time for capital raising and asset management integration, but they are also the most strategic financial partner we've worked with</p>
-        <div class="who"><div class="av">AB</div><div><b>Amina Bello</b><span>Chief Financial Officer</span></div></div></div>
+        <div class="who"><img src="assets/a4.jpg" alt=""><div><b>Amina Bello</b><span>Chief Financial Officer</span></div></div></div>
     </div>
   </section>
 
